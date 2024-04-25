@@ -12,7 +12,7 @@ public class Driver {
      * @returns double that is the value of a node
      */
     public static double f(Node n){
-        double val = 0;//value of node (will be variance of nums)
+        double val = 0;//value of node (will be mean absolute error of nums)
         int len = (n.getSize()/2);//length of sums array
         int[] sums = new int[len];
         int sum = 0;//sum of sums
