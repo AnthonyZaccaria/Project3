@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Node {
     private int size;//either 6, 10, or 14
     private int[] nums;//going to be length size+1
@@ -7,11 +9,22 @@ public class Node {
     // center number is 0
     // 1 is opposite of 2, 3 is opposite of 4, etc...
     // So 1+0+2 is a diagnol, 3+0+4 is a diagnol, etc...
-    public Node(int size){
-        nums = new int[size+1];
+    
+    // constructor to generate start node;
+    public Node(int size,int loc){
+        this.nums = new int[size+1];
         biggest = size+1;
         nums[loc] = biggest;
     }
+// Constuctor which inputs the numbers into a node 
+    public Node(int[] nums,int loc,int size){
+        this.nums = new int[size+1];
+        for (int i=0;i<size+1;i++){
+            this.nums[i] = nums[i];
+        }
+        this.biggest = size+1;
+    }
+
 
     //getters
     public int getSize() {
@@ -27,6 +40,13 @@ public class Node {
         return biggest;
     }
 
+    //toString methos
+    @Override
+    public String toString() {
+        return "Node "+Arrays.toString(nums);
+    }
+
+    
     
 
 
