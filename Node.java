@@ -13,7 +13,21 @@ public class Node {
         nums[loc] = biggest;
     }
 
+    //getters
+    public int getSize() {
+        return size;
+    }
+    public int[] getNums() {
+        return nums;
+    }
+    public int getLoc() {
+        return loc;
+    }
+    public int getBiggest() {
+        return biggest;
+    }
 
+    
 
 
 
