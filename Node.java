@@ -1,5 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
-
+import java.util.Random;
 public class Node {
     private int size;//either 6, 10, or 14
     private int[] nums;//going to be length size+1
@@ -10,14 +11,29 @@ public class Node {
     // 1 is opposite of 2, 3 is opposite of 4, etc...
     // So 1+0+2 is a diagnol, 3+0+4 is a diagnol, etc...
     
-    // constructor to generate start node;
+    // constructor to generate random start node;
     public Node(int size,int loc){
         this.nums = new int[size+1];
-        biggest = size+1;
-        nums[loc] = biggest;
+        this.size=size;
+        this.biggest = size+1;
+        this.nums[loc] = biggest;
+        //following needed for random restart
+        ArrayList<Integer> numbers = new ArrayList<Integer>();//will be numbers 1 through size
+        for (int i=0;i<size;i++) numbers.add(i+1); 
+        for (int i=0;i<size;i++){
+            if (i==loc) continue;
+            else{
+                Random gen = new Random();
+                int rnum = numbers.remove(gen.nextInt(numbers.size()));//random integer
+                //the remove makes sure there is no repeats
+                this.nums[i]=rnum;
+            }
+            nums[size]=numbers.get(0);
+        }
     }
 // Constuctor which inputs the numbers into a node 
     public Node(int[] nums,int loc,int size){
+        this.size=size;
         this.nums = new int[size+1];
         for (int i=0;i<size+1;i++){
             this.nums[i] = nums[i];

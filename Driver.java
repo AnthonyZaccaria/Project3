@@ -2,12 +2,14 @@
 public class Driver {
     public static void main(String[] args) {
         Node n1 = new Node(6,0);
+        System.out.println(n1);
+        System.out.println("value of initial node: "+f(n1));
     }
 
     /**
      * Value function
      * @param n: node
-     * @returns int that is the value
+     * @returns double that is the value of a node
      */
     public static double f(Node n){
         double val = 0;//value of node (will be variance of nums)
