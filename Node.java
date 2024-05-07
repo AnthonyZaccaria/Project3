@@ -16,6 +16,7 @@ public class Node {
         this.nums = new int[size+1];
         this.size=size;
         this.biggest = size+1;
+        this.loc=loc;
         this.nums[loc] = biggest;
         //following needed for random restart
         ArrayList<Integer> numbers = new ArrayList<Integer>();//will be numbers 1 through size
@@ -28,11 +29,12 @@ public class Node {
                 //the remove makes sure there is no repeats
                 this.nums[i]=rnum;
             }
-            nums[size]=numbers.get(0);
+            if (loc != size) nums[size]=numbers.get(0);//error occured when loc was last index
         }
     }
 // Constuctor which inputs the numbers into a node 
     public Node(int[] nums,int loc){
+        this.loc=loc;
         this.size=nums.length-1;
         this.nums = new int[this.size+1];
         for (int i=0;i<this.size+1;i++){
@@ -40,6 +42,8 @@ public class Node {
         }
         this.biggest = this.size+1;
     }
+
+   
 
     @Override
     public boolean equals(Object obj) {
@@ -50,22 +54,26 @@ public class Node {
         if (getClass() != obj.getClass())
             return false;
         Node other = (Node) obj;
+        if (size != other.size)
+            return false;
         if (!Arrays.equals(nums, other.nums))
+            return false;
+        if (loc != other.loc)
             return false;
         return true;
     }
     //getters
     public int getSize() {
-        return size;
+        return this.size;
     }
     public int[] getNums() {
-        return nums;
+        return this.nums;
     }
     public int getLoc() {
-        return loc;
+        return this.loc;
     }
     public int getBiggest() {
-        return biggest;
+        return this.biggest;
     }
 
     //toString methos
