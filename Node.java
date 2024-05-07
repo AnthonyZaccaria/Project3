@@ -32,16 +32,28 @@ public class Node {
         }
     }
 // Constuctor which inputs the numbers into a node 
-    public Node(int[] nums,int loc,int size){
-        this.size=size;
-        this.nums = new int[size+1];
-        for (int i=0;i<size+1;i++){
+    public Node(int[] nums,int loc){
+        this.size=nums.length-1;
+        this.nums = new int[this.size+1];
+        for (int i=0;i<this.size+1;i++){
             this.nums[i] = nums[i];
         }
-        this.biggest = size+1;
+        this.biggest = this.size+1;
     }
 
-
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Node other = (Node) obj;
+        if (!Arrays.equals(nums, other.nums))
+            return false;
+        return true;
+    }
     //getters
     public int getSize() {
         return size;
